@@ -8,15 +8,11 @@
     <p>Pour rappel le plugin a pour chemin <strong>lib/modules/<%= @feature.plugin_name.underscore %>.rb</strong>.</p>
     <p>
       <h4>Instructions</h4>
-      <pre>
-        <%= @feature.description %>
-      </pre>
+      <pre><%= @feature.description %></pre>
 
       <% if @feature == current_user.feature %>
         <h4><a class="slide">Voir la solution? (n00b)</a></h4>
-        <pre class="slide" style="display:none;">
-          <%= @feature.solution %>
-        </pre>
+        <pre class="slide" style="display:none;"><%= @feature.solution %></pre>
       <% end %>
 
       <hr />
