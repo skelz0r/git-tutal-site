@@ -44,10 +44,35 @@ div.auth-form {
 	}
 }
 
+a.slide {
+	cursor: pointer;
+}
+
+// Features
+div.feature {
+	width: 80%;
+	margin: auto;
+}
+
 // Admin
 div.admin {
 	&.users {
 		width: 600px;
 		margin: auto;
+	}
+}
+
+// Stars
+table {
+	img.star {
+		width: 15px;
+		vertical-align: 0%;
+	}
+}
+
+div.page-header {
+	img.star {
+		width: 30px;
+		vertical-align: -40%;
 	}
 }

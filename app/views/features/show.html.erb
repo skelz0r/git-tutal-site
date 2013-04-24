@@ -1,29 +1,30 @@
-<%- model_class = Feature -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
+<div class="feature">
+  <div class="page-header">
+    <h1><%= @feature.name %></h1>
+    <h3>Nom du plugin : <%= @feature.plugin_name %></h3>
+    <p>Difficulté : <%= render :partial => "shared/stars", :locals => {:level => @feature.level} %></p>
+  </div>
+  <div>
+    <p>Pour rappel le plugin a pour chemin <strong>plugins/<%= @feature.plugin_name.underscore %>.rb</strong>.</p>
+    <p>
+      <h4>Instructions</h4>
+      <pre>
+        <%= @feature.description %>
+      </pre>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @feature.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:plugin_name) %>:</strong></dt>
-  <dd><%= @feature.plugin_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:level) %>:</strong></dt>
-  <dd><%= @feature.level %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @feature.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:solution) %>:</strong></dt>
-  <dd><%= @feature.solution %></dd>
-</dl>
+      <% if @feature == current_user.feature %>
+        <h4><a class="slide">Voir la solution? (n00b)</a></h4>
+        <pre class="slide" style="display:none;">
+          <%= @feature.solution %>
+        </pre>
+      <% end %>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              features_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_feature_path(@feature), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              feature_path(@feature),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+      <hr />
+    <% unless current_user.has_feature? %>
+      <h3><%= link_to("Carrément que ça me branche ! Je prend !", @feature, :method => :put) %></h3>
+    <% end %>
+    <% if @feature == current_user.feature %>
+      Hey hey, c'est ta feature <%= current_user.name %> !
+    <% end %>
+  </div>
 </div>

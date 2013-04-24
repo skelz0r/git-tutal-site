@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$('a.slide').click(function() {
+	container = $("pre.slide");
+	if (container.is(':visible')) {
+		container.slideUp();
+	}
+	else {
+		container.slideDown();
+	}
+});
+		
