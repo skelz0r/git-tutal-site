@@ -1,0 +1,26 @@
+<%= form_for @user, :url => sessions_url, :html => { :class => 'form-horizontal' } do |f| %>
+  <% unless @user.errors.empty? %>
+    <ul class="alert alert-error">
+      <% @user.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+    </ul>
+  <% end %>
+        
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :password, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Enter NOW!", :class => 'btn btn-success' %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+//= require_tree .
+//= require_self
+
+// Layout
+footer.last {
+
+	padding: 10px;
+
+	p {
+		float: right;
+	}
+}
+
+.alert {
+	li { list-style-type: none; }
+}
+
+// Authentication blocks : signin & signup
+div.auth-form {
+	margin: auto;
+	width: 600px;
+	
+	h1 {
+		text-align: center;
+	}
+
+	p.right {
+		float: right;
+		margin-top: 15px;
+	}
+}
