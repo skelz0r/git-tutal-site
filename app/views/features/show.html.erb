@@ -26,5 +26,13 @@
     <% if @feature == current_user.feature %>
       Hey hey, c'est ta feature <%= current_user.name %> !
     <% end %>
+    <% if admin? %>
+      User :
+      <% if @feature.user_id? %>
+        <%= @feature.user.name %>
+      <% else %>
+        FOREVER ALONE
+      <% end %>
+    <% end %>
   </div>
 </div>

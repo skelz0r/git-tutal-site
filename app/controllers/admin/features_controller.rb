@@ -28,7 +28,7 @@ class Admin::FeaturesController < AdminController
 
     respond_to do |format|
       if @feature.save
-        format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
+        format.html { redirect_to admin_features_path, notice: 'Feature was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -40,7 +40,7 @@ class Admin::FeaturesController < AdminController
 
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
-        format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
+        format.html { redirect_to admin_features_path, notice: 'Feature was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -52,7 +52,7 @@ class Admin::FeaturesController < AdminController
     @feature.destroy
 
     respond_to do |format|
-      format.html { redirect_to features_url }
+      format.html { redirect_to admin_features_url }
     end
   end
 end
