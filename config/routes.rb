@@ -8,4 +8,10 @@ GitTutalSite::Application.routes.draw do
   resources :sessions, :only => [:create, :destroy]
 
   resources :features #, :only => [:index, :show]
+  
+  resources :admin, :only => [:index]
+  namespace :admin do
+    resources :features
+    resources :users, :only => [:index, :update]
+  end
 end

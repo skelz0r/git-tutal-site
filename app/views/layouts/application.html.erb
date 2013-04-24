@@ -15,7 +15,7 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
   </head>
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
 
     <div class="navbar navbar-inverse navbar-fluid-top">
       <div class="navbar-inner">
@@ -29,8 +29,19 @@
           <% if signed_in? %>
             <div class="container-fluid nav-collapse">
               <ul class="nav">
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
+                <li><%= link_to "Explications générales", welcome_index_path  %></li>
+                <li><%= link_to "Liste des features", features_path %></li>
+                <% if current_user.has_feature? %>
+                  <li><%= link_to "La superbe feature que je dois faire!", feature_path(current_user.feature) %></li>
+                <% end %>
+                <% if admin? %>
+                  <li><%= link_to "Admin", admin_index_path %></li>
+                <% end %>
+              </ul>
+              <ul class="nav right">
+                <li>
+                  <a>COUCOU <%= current_user.name %> COUCOU!</a>
+                </li>
                 <li><%= link_to "OUT!", signout_path  %></li>
               </ul>
             </div>

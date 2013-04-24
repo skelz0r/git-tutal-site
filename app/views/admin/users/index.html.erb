@@ -1,0 +1,31 @@
+<div class="admin users">
+  <%- model_class = User -%>
+  <div class="page-header">
+    <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:name) %></th>
+        <th><%= model_class.human_attribute_name(:password) %></th>
+        <th><%= model_class.human_attribute_name(:admin) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr id="<%= dom_id(user) %>">
+          <td><%= user.name %></td>
+          <td><%= user.password %></td>
+          <td>
+            <% if user.admin? || user.name == "Skelz0r" %>
+              <span class="green">Admin</span>
+            <% else %>
+              <span class="red">Non admin</span>
+            <% end %>
+            <%= link_to("Toggle", [:admin, user], :method => :put, :remote => true)%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

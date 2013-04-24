@@ -1,0 +1,5 @@
+<% if @user.admin? %>
+  $('tr#<%= dom_id(@user) %> td:last span').html("Admin").addClass('green').removeClass('red');
+<% else %>
+  $('tr#<%= dom_id(@user) %> td:last span').html("Non admin").addClass('red').removeClass('green');
+<% end %>

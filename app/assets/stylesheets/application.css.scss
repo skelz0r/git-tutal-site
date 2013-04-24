@@ -15,6 +15,20 @@ footer.last {
 	li { list-style-type: none; }
 }
 
+div.navbar {
+	ul.nav.right {
+		float: right;
+	}
+}
+
+.green {
+	color: green;
+}
+
+.red {
+	color: red;
+}
+
 // Authentication blocks : signin & signup
 div.auth-form {
 	margin: auto;
@@ -27,5 +41,13 @@ div.auth-form {
 	p.right {
 		float: right;
 		margin-top: 15px;
+	}
+}
+
+// Admin
+div.admin {
+	&.users {
+		width: 600px;
+		margin: auto;
 	}
 }
